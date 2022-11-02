@@ -1,8 +1,11 @@
-import React from 'react';
-import './App.css';
-
+import { AppStyle } from './app.style';
+import Layout from './layout/Layout';
 function App() {
-    return <div className="App">Set up the working environment</div>;
+    return (
+        <AppStyle>
+            <Layout></Layout>
+        </AppStyle>
+    );
 }
 
 export default App;
