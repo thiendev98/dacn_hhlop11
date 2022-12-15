@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="706.958 257.417 247.704 220.23" width="247.704" height="220.23" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern x="0" y="0" width="120" height="6" patternUnits="userSpaceOnUse" id="SvgjsPattern10384" patternTransform="matrix(1, 0, 0, 1, 0, 0)">
+      <rect width="120" height="3" x="0" y="0" fill="#5dacec"/>
+      <rect width="120" height="3" x="0" y="3" fill="rgba(0, 0, 0, 0)"/>
+    </pattern>
+    <clipPath id="SvgjsClipPath10383">
+      <circle r="30" cx="1586.76" cy="131.31"/>
+    </clipPath>
+    <pattern x="0" y="0" width="12.9" height="12.9" patternUnits="userSpaceOnUse" id="SvgjsPattern10392" patternTransform="matrix(1.000001, 0, 0, 1.000001, 0, 0)">
+      <path d="M0 12.9L6.45 0L12.9 12.9" stroke="#97c8f0" fill="none"/>
+    </pattern>
+    <clipPath id="SvgjsClipPath10391">
+      <circle r="45.15" cx="537.22" cy="7.51"/>
+    </clipPath>
+    <pattern x="0" y="0" width="12.68" height="12.68" patternUnits="userSpaceOnUse" id="SvgjsPattern10394" patternTransform="matrix(1, 0, 0, 1, 0, 0)">
+      <path d="M6.34 1L6.34 11.68M1 6.34L11.68 6.34" stroke="#65afee" fill="none" stroke-width="1.38"/>
+    </pattern>
+    <clipPath id="SvgjsClipPath10393">
+      <circle r="63.4" cx="1521.874" cy="288.58"/>
+    </clipPath>
+  </defs>
+  <circle r="16.217" cx="845.919" cy="389.933" fill="#97c7ef" style=""/>
+  <circle r="27.128" cx="926.518" cy="291.517" fill="#97c7ef" style=""/>
+  <rect width="120" height="120" clip-path="url(#SvgjsClipPath10383)" x="1526.76" y="71.31" fill="url(#SvgjsPattern10384)" transform="matrix(0.993729, -0.111816, 0.111816, 0.993729, -706.12793, 357.382355)"/>
+  <rect width="180.6" height="180.6" clip-path="url(#SvgjsClipPath10391)" x="446.92" y="-82.79" fill="url(#SvgjsPattern10392)" transform="matrix(0.583399, 0.812185, -0.812185, 0.583399, 590.075989, -74.760262)"/>
+  <rect width="253.6" height="253.6" clip-path="url(#SvgjsClipPath10393)" x="1395.074" y="161.78" fill="url(#SvgjsPattern10394)" transform="matrix(-0.995709, 0.092544, -0.092544, -0.995709, 2350.509277, 471.370605)"/>
+  <circle r="45.723" cx="910.342" cy="432.281" fill="#74bdf8"/>
+  <path d="M 914.531 356.719 C 913.584 360.926 917.547 364.58 921.663 363.297 C 923.574 362.701 925.022 361.131 925.461 359.179 C 926.408 354.972 922.445 351.318 918.329 352.601 C 916.418 353.197 914.97 354.767 914.531 356.719 Z M 930.141 360.229 C 929.194 364.436 933.157 368.09 937.273 366.807 C 939.184 366.211 940.632 364.641 941.071 362.689 C 942.018 358.482 938.055 354.828 933.939 356.111 C 932.028 356.707 930.58 358.277 930.141 360.229 Z M 945.751 363.739 C 944.804 367.946 948.767 371.6 952.883 370.317 C 954.794 369.721 956.242 368.151 956.681 366.199 C 957.628 361.992 953.665 358.338 949.549 359.621 C 947.638 360.217 946.19 361.787 945.751 363.739 Z M 961.371 367.249 C 960.283 371.42 964.118 375.205 968.274 374.062 C 970.334 373.496 971.892 371.807 972.291 369.709 C 973.379 365.538 969.544 361.753 965.388 362.896 C 963.328 363.462 961.77 365.151 961.371 367.249 Z" fill="#9ccbf0" transform="matrix(0, 1, -1, 0, 1306.73822, -580.129272)"/>
+</svg>
