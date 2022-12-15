@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 import { selectedColor, textSelectedColor, whiteColor } from 'types/color';
-import { heightHeader } from 'types/variables';
+import { centerElements, heightHeader } from 'types/variables';
 
 export const SidebarStyle = styled.div`
     #sidebar {
         position: fixed;
         top: ${heightHeader}px;
+        ${centerElements}
         left: 0;
         bottom: 0;
-        padding: 1rem;
-        box-shadow: rgb(0 0 0 / 25%) 2px 1px 2px;
+        padding: 4px;
+        // box-shadow: rgb(0 0 0 / 25%) 2px 1px 2px;
+        svg {
+            font-size: 20px;
+        }
     }
 `;
 export const SidebarModalStyle = styled.div`

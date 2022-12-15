@@ -1,6 +1,6 @@
 import { SidebarStyle, SidebarModalStyle } from './sidebar.style';
 import { useEffect, useState } from 'react';
-import { ArrowRightCircle, XCircle, CaretDown, CaretRight } from 'react-bootstrap-icons';
+import { XCircle, CaretDown, CaretRight, List } from 'react-bootstrap-icons';
 import { useAppDispatch, useAppSelector } from 'redux/hook';
 import { getHeightSidebar, getInformationChapterLesson } from 'redux/tableOfContentsSlice';
 import { initialListExpand, widthSidebar } from 'types/variables';
@@ -122,8 +122,8 @@ export default function Sidebar() {
     else
         return (
             <SidebarStyle>
-                <div id="sidebar" style={{ width: widthSidebarHook }}>
-                    <ArrowRightCircle onClick={() => handleShowSidebar()}></ArrowRightCircle>
+                <div id="sidebar" style={{ width: widthSidebarHook, height: widthSidebarHook }}>
+                    <List onClick={() => handleShowSidebar()}></List>
                 </div>
             </SidebarStyle>
         );

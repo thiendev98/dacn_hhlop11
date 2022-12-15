@@ -7,6 +7,6 @@ export const AppStyle = styled.div`
         text-decoration: none;
         list-style-type: none;
         box-sizing: border-box;
-        font-family: sans-serif;
+        font-family: Poppins, serif;
     }
 `;
