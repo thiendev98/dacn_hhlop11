@@ -14,6 +14,7 @@ import image211 from 'assets/images/image_2.1.1.png';
 import image212 from 'assets/images/image_2.1.2.png';
 import { Col, Row, Slider } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { CheckboxValueType } from 'antd/es/checkbox/Group';
 const { Search } = Input;
 const { Header, Sider, Content } = Layout;
 type MenuItem = Required<MenuProps>['items'][number];
@@ -97,7 +98,27 @@ export default function Screen() {
     const [heightRadius, setHeightRadius] = useState(0);
     const [sectorCount, setSectorCount] = useState(3);
     const [stackCount, setStackCount] = useState(1);
-
+    const [resetData, setResetData] = useState(false);
+    const handleReset = () => {
+        setBaseRadius(0);
+        setTopRadius(0);
+        setSectorCount(3);
+        setStackCount(1);
+        setHeightRadius(0);
+        setResetData(true);
+    };
+    useEffect(() => {
+        if (resetData) setCheckedValueList([]);
+        return () => {
+            setResetData(false);
+        };
+    }, [resetData]);
+    const [checkedValueList, setCheckedValueList] = useState<
+        CheckboxValueType[]
+    >([]);
+    const onCheckboxChange = (checkedValues: CheckboxValueType[]) => {
+        setCheckedValueList(checkedValues);
+    };
     const onChangeBaseRadius = (newValue: number) => {
         setBaseRadius(newValue);
     };
@@ -191,7 +212,7 @@ export default function Screen() {
                         openKeys={openKeys}
                         onOpenChange={onOpenChange}
                         style={{
-                            height: `${window.innerHeight - 24}` + 'px',
+                            height: `${window.innerHeight - 24}px`,
                         }}
                         items={items}
                     />
@@ -225,10 +246,9 @@ export default function Screen() {
                         style={{
                             margin: '24px 16px',
                             padding: 24,
-                            height:
-                                `calc(${
-                                    window.innerHeight - 24 - heightHeader
-                                })` + 'px',
+                            height: `calc(${
+                                window.innerHeight - 24 - heightHeader
+                            })px`,
                             background: colorBgContainer,
                         }}
                     >
@@ -437,18 +457,41 @@ export default function Screen() {
                                             <span>{stackCount}</span>
                                         </Col>
                                     </Row>
-                                    <Row style={{ marginBottom: '4px' }}>
-                                        <Checkbox>Show wireframe</Checkbox>
-                                    </Row>
-                                    <Row style={{ marginBottom: '4px' }}>
-                                        <Checkbox>Start Animation</Checkbox>
-                                    </Row>
-                                    <Row style={{ marginBottom: '4px' }}>
-                                        <Checkbox>Smooth Shading</Checkbox>
-                                    </Row>
+                                    <Checkbox.Group
+                                        style={{
+                                            width: '100%',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                        }}
+                                        value={checkedValueList}
+                                        onChange={onCheckboxChange}
+                                    >
+                                        <Row
+                                            style={{
+                                                marginBottom: '4px',
+                                            }}
+                                        >
+                                            <Checkbox value="Wireframe">
+                                                Show wireframe
+                                            </Checkbox>
+                                        </Row>
+                                        <Row style={{ marginBottom: '4px' }}>
+                                            <Checkbox value="Animation">
+                                                Start Animation
+                                            </Checkbox>
+                                        </Row>
+                                        <Row style={{ marginBottom: '4px' }}>
+                                            <Checkbox value="Smooth">
+                                                Smooth Shading
+                                            </Checkbox>
+                                        </Row>
+                                    </Checkbox.Group>
                                     <Row>
                                         <Col span={12}>
-                                            <Button type="primary">
+                                            <Button
+                                                type="primary"
+                                                onClick={() => handleReset()}
+                                            >
                                                 Reset
                                             </Button>
                                         </Col>
@@ -669,18 +712,37 @@ export default function Screen() {
                                             <span>{stackCount}</span>
                                         </Col>
                                     </Row>
-                                    <Row style={{ marginBottom: '4px' }}>
-                                        <Checkbox>Show wireframe</Checkbox>
-                                    </Row>
-                                    <Row style={{ marginBottom: '4px' }}>
-                                        <Checkbox>Start Animation</Checkbox>
-                                    </Row>
-                                    <Row style={{ marginBottom: '4px' }}>
-                                        <Checkbox>Smooth Shading</Checkbox>
-                                    </Row>
+                                    <Checkbox.Group
+                                        style={{
+                                            width: '100%',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                        }}
+                                        value={checkedValueList}
+                                        onChange={onCheckboxChange}
+                                    >
+                                        <Row style={{ marginBottom: '4px' }}>
+                                            <Checkbox value="Wireframe">
+                                                Show wireframe
+                                            </Checkbox>
+                                        </Row>
+                                        <Row style={{ marginBottom: '4px' }}>
+                                            <Checkbox value="Animation">
+                                                Start Animation
+                                            </Checkbox>
+                                        </Row>
+                                        <Row style={{ marginBottom: '4px' }}>
+                                            <Checkbox value="Smooth">
+                                                Smooth Shading
+                                            </Checkbox>
+                                        </Row>
+                                    </Checkbox.Group>
                                     <Row>
                                         <Col span={24}>
-                                            <Button type="primary">
+                                            <Button
+                                                type="primary"
+                                                onClick={() => handleReset()}
+                                            >
                                                 Reset
                                             </Button>
                                         </Col>
