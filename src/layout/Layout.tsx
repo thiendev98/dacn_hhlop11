@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 const { Search } = Input;
 const { Header, Sider, Content } = Layout;
 type MenuItem = Required<MenuProps>['items'][number];
-const heightSlider = 42;
+const heightSlider = 44;
 function getItem(
     label: React.ReactNode,
     key: React.Key,
@@ -227,7 +227,7 @@ export default function Screen() {
                         openKeys={openKeys}
                         onOpenChange={onOpenChange}
                         style={{
-                            height: `${window.innerHeight - 24}px`,
+                            height: `${window.innerHeight - 80}px`,
                         }}
                         items={items}
                     />
@@ -270,7 +270,18 @@ export default function Screen() {
                         {collapsed && (
                             <Row className="content_row">
                                 <Col span={15}>
-                                    <img src={exprImage} alt="" />
+                                    {exprImage === image211 && (
+                                        <img src={exprImage} alt="" />
+                                    )}
+                                    {exprImage === image212 && (
+                                        <img
+                                            src={exprImage}
+                                            alt=""
+                                            style={{
+                                                height: '421px',
+                                            }}
+                                        />
+                                    )}
                                 </Col>
                                 <Col span={9}>
                                     <Row

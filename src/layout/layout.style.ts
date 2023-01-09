@@ -48,7 +48,7 @@ export const LayoutStyle = styled.div`
             margin-top: -4px !important;
         }
         img {
-            width: 90%;
+            width: 95%;
         }
         button {
             cursor: pointer;
