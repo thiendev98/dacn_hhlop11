@@ -15,6 +15,7 @@ import image212 from 'assets/images/image_2.1.2.png';
 import { Col, Row, Slider } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
+import Swal from 'sweetalert2';
 const { Search } = Input;
 const { Header, Sider, Content } = Layout;
 type MenuItem = Required<MenuProps>['items'][number];
@@ -100,12 +101,26 @@ export default function Screen() {
     const [stackCount, setStackCount] = useState(1);
     const [resetData, setResetData] = useState(false);
     const handleReset = () => {
-        setBaseRadius(0);
-        setTopRadius(0);
-        setSectorCount(3);
-        setStackCount(1);
-        setHeightRadius(0);
-        setResetData(true);
+        Swal.fire({
+            title: 'Chú ý',
+            text: 'Bạn có muốn cập nhật lại dữ liệu không?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#1677ff',
+            cancelButtonColor: '#87adbd',
+            confirmButtonText: 'Xác nhận',
+            cancelButtonText: 'Hủy bỏ',
+            focusConfirm: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setBaseRadius(0);
+                setTopRadius(0);
+                setSectorCount(3);
+                setStackCount(1);
+                setHeightRadius(0);
+                setResetData(true);
+            }
+        });
     };
     useEffect(() => {
         if (resetData) setCheckedValueList([]);
