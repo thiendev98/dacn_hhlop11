@@ -16,10 +16,11 @@ import { Col, Row, Slider } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
 import Swal from 'sweetalert2';
+import { saveAs } from 'file-saver';
 const { Search } = Input;
 const { Header, Sider, Content } = Layout;
 type MenuItem = Required<MenuProps>['items'][number];
-const heightSlider = 42;
+const heightSlider = 44;
 function getItem(
     label: React.ReactNode,
     key: React.Key,
@@ -88,7 +89,7 @@ const items: MenuItem[] = [
 ];
 const rootSubmenuKeys = ['CHAPTER1', 'CHAPTER2', 'CHAPTER3'];
 export default function Screen() {
-    const [exprImage, setExprImage] = useState(image211);
+    const [exprImage, setExprImage] = useState<string>(image211);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     useEffect(() => {
@@ -100,6 +101,10 @@ export default function Screen() {
     const [sectorCount, setSectorCount] = useState(3);
     const [stackCount, setStackCount] = useState(1);
     const [resetData, setResetData] = useState(false);
+    const [lessonChapter, setLessonChapter] = useState<string[]>([
+        '1.1',
+        'CHAPTER1',
+    ]);
     const handleReset = () => {
         Swal.fire({
             title: 'Chú ý',
@@ -150,6 +155,11 @@ export default function Screen() {
         setStackCount(newValue);
     };
     const [openKeys, setOpenKeys] = useState(['']);
+    const downloadImage = () => {
+        const chapterOfImage = 'chapter' + lessonChapter[0][0];
+        const lessonOfImage = 'lesson' + lessonChapter[0][2];
+        saveAs(exprImage, `${chapterOfImage}_${lessonOfImage}.png`);
+    };
     const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
         const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
         if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
@@ -165,6 +175,7 @@ export default function Screen() {
     const onSearch = (value: string) => console.log(value);
     const onClickChange: MenuProps['onClick'] = ({ keyPath }) => {
         // console.log(keyPath);
+        setLessonChapter(keyPath);
         if (exprImage === image211) setExprImage(image212);
         else setExprImage(image211);
     };
@@ -227,7 +238,7 @@ export default function Screen() {
                         openKeys={openKeys}
                         onOpenChange={onOpenChange}
                         style={{
-                            height: `${window.innerHeight - 24}px`,
+                            height: `${window.innerHeight - 80}px`,
                         }}
                         items={items}
                     />
@@ -270,7 +281,18 @@ export default function Screen() {
                         {collapsed && (
                             <Row className="content_row">
                                 <Col span={15}>
-                                    <img src={exprImage} alt="" />
+                                    {exprImage === image211 && (
+                                        <img src={exprImage} alt="" />
+                                    )}
+                                    {exprImage === image212 && (
+                                        <img
+                                            src={exprImage}
+                                            alt=""
+                                            style={{
+                                                height: '421px',
+                                            }}
+                                        />
+                                    )}
                                 </Col>
                                 <Col span={9}>
                                     <Row
@@ -487,7 +509,7 @@ export default function Screen() {
                                             }}
                                         >
                                             <Checkbox value="Wireframe">
-                                                Show wireframe
+                                                Show Wireframe
                                             </Checkbox>
                                         </Row>
                                         <Row style={{ marginBottom: '4px' }}>
@@ -511,7 +533,11 @@ export default function Screen() {
                                             </Button>
                                         </Col>
                                         <Col span={12}>
-                                            <Button>Save as png</Button>
+                                            <Button
+                                                onClick={() => downloadImage()}
+                                            >
+                                                Save as png
+                                            </Button>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -738,7 +764,7 @@ export default function Screen() {
                                     >
                                         <Row style={{ marginBottom: '4px' }}>
                                             <Checkbox value="Wireframe">
-                                                Show wireframe
+                                                Show Wireframe
                                             </Checkbox>
                                         </Row>
                                         <Row style={{ marginBottom: '4px' }}>
@@ -763,7 +789,11 @@ export default function Screen() {
                                         </Col>
                                         <Col span={24}>
                                             {' '}
-                                            <Button>Save as png</Button>
+                                            <Button
+                                                onClick={() => downloadImage()}
+                                            >
+                                                Save as png
+                                            </Button>
                                         </Col>
                                     </Row>
                                 </Col>

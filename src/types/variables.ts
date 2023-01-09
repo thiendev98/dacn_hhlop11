@@ -1,5 +1,5 @@
 export const heightBreadcrumbs = 52;
-export const heightHeader = 64;
+export const heightHeader = 80;
 export const widthSidebar = 52;
 export const fontSizeIcon = 20;
 export const centerElements = {
