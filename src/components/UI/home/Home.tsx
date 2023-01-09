@@ -4,6 +4,7 @@ import background_left from 'assets/images/background-left-half.svg';
 import background_right from 'assets/images/background-right-half.svg';
 import background_content from 'assets/images/sgk_11.webp';
 import { useNavigate } from 'react-router-dom';
+import math from 'assets/images/math.png';
 export default function Home() {
     const navigate = useNavigate();
     const handleClickStart = () => {
@@ -27,10 +28,11 @@ export default function Home() {
                         </div>
                         <div className="container_introduce">
                             <div>
-                                <h1>Chào mừng bạn đến với website của chúng tôi</h1>
+                                <h1>Chào mừng bạn đến với</h1>
+                                <img src={math} alt="" />
                                 <p>
-                                    Website này sẽ hỗ trợ bạn trong việc vẽ hình trong Sách giáo
-                                    khoa Hình học 11. Cùng tìm hiểu ngay thôi nào!
+                                    Website này sẽ hỗ trợ bạn việc vẽ hình trong Sách giáo khoa Hình
+                                    học 11. Cùng tìm hiểu ngay thôi nào!
                                 </p>
                                 <button onClick={() => handleClickStart()}>Bắt đầu</button>
                             </div>

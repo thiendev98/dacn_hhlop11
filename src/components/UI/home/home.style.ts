@@ -45,6 +45,12 @@ export const HomeStyles = styled.div`
             flex-basis: 54%;
             margin-top: 60px;
             text-align: center;
+            img {
+                width: 360px;
+                rotate: -4deg;
+                z-index: 1;
+                margin-top: -80px;
+            }
             h1 {
                 font-weight: 600;
                 font-size: 38px;
@@ -52,14 +58,15 @@ export const HomeStyles = styled.div`
                 letter-spacing: 1px;
             }
             p {
-                font-size: 20px;
+                font-size: 21px;
                 line-height: 1.5;
                 font-weight: 400;
                 letter-spacing: 1px;
+                margin-top: -36px;
             }
             button {
                 width: 100%;
-                background: linear-gradient(to left, #3288ce, #0483ea) !important;
+                background: linear-gradient(to right, #0483e6, #0163dc) !important;
                 color: ${whiteColor};
                 font-size: 20px;
                 font-weight: 700;
