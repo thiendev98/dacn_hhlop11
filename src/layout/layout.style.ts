@@ -35,14 +35,14 @@ export const LayoutStyle = styled.div`
         cursor: pointer;
     }
     .logo_math {
-        width: 340px;
+        width: 252px;
         z-index: 2;
         margin-left: -60px;
         margin-top: 28px;
     }
     .content_row {
         font-size: 15px;
-        font-weight: bold;
+        // font-weight: bold;
         :where(.css-dev-only-do-not-override-26rdvq).ant-slider
             .ant-slider-handle::after {
             margin-top: -4px !important;
@@ -64,7 +64,7 @@ export const LayoutStyle = styled.div`
     }
     .content_row_false {
         font-size: 15px;
-        font-weight: bold;
+        // font-weight: bold;
         button {
             cursor: pointer;
             width: 100%;
