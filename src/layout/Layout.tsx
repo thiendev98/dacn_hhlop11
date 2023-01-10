@@ -2,7 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button, Input, Layout, Menu, theme } from 'antd';
 import { heightHeader } from 'types/variables';
-import { AppstoreOutlined } from '@ant-design/icons';
+import {
+    App,
+    SlashLg,
+    CaretUp,
+    CircleFill,
+    Dot,
+    CaretUpSquare,
+    Box,
+} from 'react-bootstrap-icons';
 import { Checkbox } from 'antd';
 import type { MenuProps } from 'antd';
 import { useAppDispatch } from 'redux/hook';
@@ -21,6 +29,9 @@ import { ItemType } from 'antd/es/menu/hooks/useItems';
 import page from 'assets/images/file-earmark.svg';
 import book from 'assets/images/book.svg';
 import out from 'assets/images/out.svg';
+import one from 'assets/images/1-square.svg';
+import two from 'assets/images/2-square.svg';
+import three from 'assets/images/3-square.svg';
 const { Search } = Input;
 const { Header, Sider, Content } = Layout;
 type MenuItem = Required<MenuProps>['items'][number];
@@ -42,43 +53,43 @@ function getItem(
 }
 
 const listObject: ItemType[] = [
-    getItem('Đa diện', 'dd', '', [getItem('S.ABCD', 'S.ABCD')]),
-    getItem('Đa giác', 'dg', '', [
-        getItem('ABCD', 'ABCD'),
-        getItem('SAB', 'SAB'),
-        getItem('SBC', 'SBC'),
-        getItem('SCD', 'SCD'),
-        getItem('SDA', 'SDA'),
-        getItem('SAC', 'SAC'),
-        getItem('SBD', 'SBD'),
+    getItem('Đa diện', 'dd', <Box />, [getItem('S.ABCD', 'S.ABCD')]),
+    getItem('Đa giác', 'dg', <CaretUpSquare />, [
+        getItem('ABCD', 'ABCD', <App />),
+        getItem('SAB', 'SAB', <CaretUp />),
+        getItem('SBC', 'SBC', <CaretUp />),
+        getItem('SCD', 'SCD', <CaretUp />),
+        getItem('SDA', 'SDA', <CaretUp />),
+        getItem('SAC', 'SAC', <CaretUp />),
+        getItem('SBD', 'SBD', <CaretUp />),
     ]),
-    getItem('Đường thẳng', 'dt', '', [
-        getItem('AB', 'AB'),
-        getItem('BC', 'BC'),
-        getItem('CD', 'CD'),
-        getItem('DA', 'DA'),
-        getItem('SA', 'SA'),
-        getItem('SB', 'SB'),
-        getItem('SC', 'SC'),
-        getItem('SD', 'SD'),
-        getItem('AC', 'AC'),
-        getItem('BD', 'BD'),
+    getItem('Đường thẳng', 'dt', <SlashLg />, [
+        getItem('AB', 'AB', <SlashLg />),
+        getItem('BC', 'BC', <SlashLg />),
+        getItem('CD', 'CD', <SlashLg />),
+        getItem('DA', 'DA', <SlashLg />),
+        getItem('SA', 'SA', <SlashLg />),
+        getItem('SB', 'SB', <SlashLg />),
+        getItem('SC', 'SC', <SlashLg />),
+        getItem('SD', 'SD', <SlashLg />),
+        getItem('AC', 'AC', <SlashLg />),
+        getItem('BD', 'BD', <SlashLg />),
     ]),
-    getItem('Mặt phẳng', 'mp'),
-    getItem('Điểm', 'd', '', [
-        getItem('S', 'S'),
-        getItem('A', 'A'),
-        getItem('B', 'B'),
-        getItem('C', 'C'),
-        getItem('D', 'D'),
-        getItem('I', 'I'),
+    getItem('Mặt phẳng', 'mp', <App />),
+    getItem('Điểm', 'd', <CircleFill />, [
+        getItem('S', 'S', <Dot />),
+        getItem('A', 'A', <Dot />),
+        getItem('B', 'B', <Dot />),
+        getItem('C', 'C', <Dot />),
+        getItem('D', 'D', <Dot />),
+        getItem('I', 'I', <Dot />),
     ]),
 ];
 const items: MenuItem[] = [
     getItem(
         'Chương 1: Phép dời hình và phép đồng dạng trong mặt phẳng',
         'CHAPTER1',
-        <AppstoreOutlined />,
+        <img src={one} alt="" />,
         [
             getItem('Bài 1: Phép biến hình', '1.1', <img src={book} alt="" />),
             getItem('Bài 2: Phép tịnh tiến', '1.2', <img src={book} alt="" />, [
@@ -145,7 +156,7 @@ const items: MenuItem[] = [
     getItem(
         'Chương 2: Đường thẳng và mặt phẳng trong không gian. Quan hệ song song',
         'CHAPTER2',
-        <AppstoreOutlined />,
+        <img src={two} alt="" />,
         [
             getItem(
                 'Bài 1: Đại cương về đường thẳng và mặt phẳng',
@@ -217,7 +228,7 @@ const items: MenuItem[] = [
     getItem(
         'Chương 3: Vectơ trong không gian. Quan hệ vuông góc trong không gian',
         'CHAPTER3',
-        <AppstoreOutlined />,
+        <img src={three} alt="" />,
         [
             getItem(
                 'Bài 1: Vectơ trong không gian',
