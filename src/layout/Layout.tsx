@@ -10,6 +10,12 @@ import {
     Dot,
     CaretUpSquare,
     Box,
+    Plus,
+    Dash,
+    CaretDownFill,
+    CaretUpFill,
+    CaretLeftFill,
+    CaretRightFill,
 } from 'react-bootstrap-icons';
 import { Checkbox } from 'antd';
 import type { MenuProps } from 'antd';
@@ -32,10 +38,11 @@ import out from 'assets/images/out.svg';
 import one from 'assets/images/1-square.svg';
 import two from 'assets/images/2-square.svg';
 import three from 'assets/images/3-square.svg';
+import image111 from 'assets/images/exercise/2.1.1.png';
 const { Search } = Input;
 const { Header, Sider, Content } = Layout;
 type MenuItem = Required<MenuProps>['items'][number];
-const heightSlider = 44;
+const heightSlider = 25;
 function getItem(
     label: React.ReactNode,
     key: React.Key,
@@ -344,11 +351,6 @@ export default function Screen() {
     useEffect(() => {
         dispatch(getDataListChapter());
     }, [dispatch]);
-    const [baseRadius, setBaseRadius] = useState(0);
-    const [topRadius, setTopRadius] = useState(0);
-    const [heightRadius, setHeightRadius] = useState(0);
-    const [sectorCount, setSectorCount] = useState(3);
-    const [stackCount, setStackCount] = useState(1);
     const [resetData, setResetData] = useState(false);
     const [lessonChapter, setLessonChapter] = useState<string[]>([
         '1.1',
@@ -367,11 +369,6 @@ export default function Screen() {
             focusConfirm: false,
         }).then((result) => {
             if (result.isConfirmed) {
-                setBaseRadius(0);
-                setTopRadius(0);
-                setSectorCount(3);
-                setStackCount(1);
-                setHeightRadius(0);
                 setResetData(true);
             }
         });
@@ -387,21 +384,6 @@ export default function Screen() {
     >([]);
     const onCheckboxChange = (checkedValues: CheckboxValueType[]) => {
         setCheckedValueList(checkedValues);
-    };
-    const onChangeBaseRadius = (newValue: number) => {
-        setBaseRadius(newValue);
-    };
-    const onChangeTopRadius = (newValue: number) => {
-        setTopRadius(newValue);
-    };
-    const onChangeHeightRadius = (newValue: number) => {
-        setHeightRadius(newValue);
-    };
-    const onChangeSectorCount = (newValue: number) => {
-        setSectorCount(newValue);
-    };
-    const onChangeStackCount = (newValue: number) => {
-        setStackCount(newValue);
     };
     const [openKeys, setOpenKeys] = useState(['']);
     const downloadImage = () => {
@@ -435,7 +417,7 @@ export default function Screen() {
                     trigger={null}
                     collapsible
                     collapsed={collapsed}
-                    width={520}
+                    width={360}
                 >
                     {collapsed && (
                         <div
@@ -530,7 +512,7 @@ export default function Screen() {
                         {collapsed && (
                             <Row className="content_row">
                                 <Col span={15}>
-                                    {exprImage === image211 && (
+                                    {exprImage !== image212 && (
                                         <img src={exprImage} alt="" />
                                     )}
                                     {exprImage === image212 && (
@@ -547,39 +529,41 @@ export default function Screen() {
                                     <Row
                                         style={{ height: heightSlider + 'px' }}
                                     >
-                                        <Col
-                                            span={6}
+                                        <h4
                                             style={{
-                                                lineHeight: heightSlider + 'px',
+                                                width: '100%',
+                                                textAlign: 'center',
+                                                textTransform: 'uppercase',
+                                                marginBottom: '6px',
                                             }}
                                         >
-                                            Bán kính đáy
-                                        </Col>
+                                            Các thao tác cơ bản
+                                        </h4>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
                                         <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={0}
-                                                max={5}
-                                                step={0.1}
-                                                onChange={onChangeBaseRadius}
-                                                value={
-                                                    typeof baseRadius ===
-                                                    'number'
-                                                        ? baseRadius
-                                                        : 0
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
+                                                fontWeight: 'bold',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{baseRadius}</span>
+                                            W, w
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Chuyển đổi qua lại giữa chế độ khung
+                                            dây và tô màu
                                         </Col>
                                     </Row>
                                     <Row
@@ -589,38 +573,22 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Bán kính đỉnh
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={0}
-                                                max={5}
-                                                step={0.1}
-                                                onChange={onChangeTopRadius}
-                                                value={
-                                                    typeof topRadius ===
-                                                    'number'
-                                                        ? topRadius
-                                                        : 0
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
+                                                fontWeight: 'bold',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{topRadius}</span>
+                                            A, a
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Bật tắt chế độ hoạt hình
                                         </Col>
                                     </Row>
                                     <Row
@@ -630,37 +598,22 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Chiều cao
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={0}
-                                                max={5}
-                                                onChange={onChangeHeightRadius}
-                                                value={
-                                                    typeof heightRadius ===
-                                                    'number'
-                                                        ? heightRadius
-                                                        : 0
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
+                                                fontWeight: 'bold',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{heightRadius}</span>
+                                            L, l
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Bật, tắt chế độ di chuột
                                         </Col>
                                     </Row>
                                     <Row
@@ -670,37 +623,21 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Sector Count
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={3}
-                                                max={100}
-                                                onChange={onChangeSectorCount}
-                                                value={
-                                                    typeof sectorCount ===
-                                                    'number'
-                                                        ? sectorCount
-                                                        : 3
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{sectorCount}</span>
+                                            <Plus />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Tăng khoảng cách camera
                                         </Col>
                                     </Row>
                                     <Row
@@ -710,37 +647,117 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Stack Count
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={1}
-                                                max={50}
-                                                onChange={onChangeStackCount}
-                                                value={
-                                                    typeof stackCount ===
-                                                    'number'
-                                                        ? stackCount
-                                                        : 1
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{stackCount}</span>
+                                            <Dash />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Giảm khoảng cách camera
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretUpFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Tăng chiều cao camera
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretDownFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Giảm chiều cao camera
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretLeftFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Quay camera theo chiều kim đồng hồ
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretRightFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Quay camera ngược chiều kim đồng hồ
                                         </Col>
                                     </Row>
                                     <Checkbox.Group
@@ -757,31 +774,32 @@ export default function Screen() {
                                                 marginBottom: '4px',
                                             }}
                                         >
-                                            <Checkbox value="Wireframe">
-                                                Show Wireframe
-                                            </Checkbox>
+                                            <Col
+                                                span={5}
+                                                style={{
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                <Checkbox value="Wireframe"></Checkbox>
+                                            </Col>
+                                            <Col span={19}>Hiện khung dây</Col>
                                         </Row>
                                         <Row style={{ marginBottom: '4px' }}>
-                                            <Checkbox value="Animation">
-                                                Start Animation
-                                            </Checkbox>
-                                        </Row>
-                                        <Row style={{ marginBottom: '4px' }}>
-                                            <Checkbox value="Smooth">
-                                                Smooth Shading
-                                            </Checkbox>
+                                            <Col
+                                                span={5}
+                                                style={{
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                <Checkbox value="Animation"></Checkbox>
+                                            </Col>
+                                            <Col span={19}>
+                                                Bắt đầu chuyển động
+                                            </Col>
                                         </Row>
                                     </Checkbox.Group>
                                     <Row>
-                                        <Col span={12}>
-                                            <Button
-                                                type="primary"
-                                                onClick={() => handleReset()}
-                                            >
-                                                Tạo lại
-                                            </Button>
-                                        </Col>
-                                        <Col span={12}>
+                                        <Col span={24}>
                                             <Button
                                                 onClick={() => downloadImage()}
                                             >
@@ -805,39 +823,41 @@ export default function Screen() {
                                     <Row
                                         style={{ height: heightSlider + 'px' }}
                                     >
-                                        <Col
-                                            span={6}
+                                        <h4
                                             style={{
-                                                lineHeight: heightSlider + 'px',
+                                                width: '100%',
+                                                textAlign: 'center',
+                                                textTransform: 'uppercase',
+                                                marginBottom: '6px',
                                             }}
                                         >
-                                            Bán kính đáy
-                                        </Col>
+                                            Các thao tác cơ bản
+                                        </h4>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
                                         <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={0}
-                                                max={5}
-                                                step={0.1}
-                                                onChange={onChangeBaseRadius}
-                                                value={
-                                                    typeof baseRadius ===
-                                                    'number'
-                                                        ? baseRadius
-                                                        : 0
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
+                                                fontWeight: 'bold',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{baseRadius}</span>
+                                            W, w
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Chuyển đổi qua lại giữa chế độ khung
+                                            dây và tô màu
                                         </Col>
                                     </Row>
                                     <Row
@@ -847,38 +867,22 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Bán kính đỉnh
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={0}
-                                                max={5}
-                                                step={0.1}
-                                                onChange={onChangeTopRadius}
-                                                value={
-                                                    typeof topRadius ===
-                                                    'number'
-                                                        ? topRadius
-                                                        : 0
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
+                                                fontWeight: 'bold',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{topRadius}</span>
+                                            A, a
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Bật tắt chế độ hoạt hình
                                         </Col>
                                     </Row>
                                     <Row
@@ -888,38 +892,22 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Chiều cao
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={0}
-                                                max={5}
-                                                step={0.1}
-                                                onChange={onChangeHeightRadius}
-                                                value={
-                                                    typeof heightRadius ===
-                                                    'number'
-                                                        ? heightRadius
-                                                        : 0
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
+                                                fontWeight: 'bold',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{heightRadius}</span>
+                                            L, l
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Bật, tắt chế độ di chuột
                                         </Col>
                                     </Row>
                                     <Row
@@ -929,37 +917,21 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Sector Count
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={3}
-                                                max={100}
-                                                onChange={onChangeSectorCount}
-                                                value={
-                                                    typeof sectorCount ===
-                                                    'number'
-                                                        ? sectorCount
-                                                        : 3
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{sectorCount}</span>
+                                            <Plus />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Tăng khoảng cách camera
                                         </Col>
                                     </Row>
                                     <Row
@@ -969,37 +941,117 @@ export default function Screen() {
                                         }}
                                     >
                                         <Col
-                                            span={6}
-                                            style={{
-                                                lineHeight: heightSlider + 'px',
-                                            }}
-                                        >
-                                            Stack Count
-                                        </Col>
-                                        <Col
-                                            span={16}
-                                            style={{ marginTop: 16 + 'px' }}
-                                        >
-                                            <Slider
-                                                min={1}
-                                                max={50}
-                                                onChange={onChangeStackCount}
-                                                value={
-                                                    typeof stackCount ===
-                                                    'number'
-                                                        ? stackCount
-                                                        : 1
-                                                }
-                                            />
-                                        </Col>
-                                        <Col
-                                            span={2}
+                                            span={5}
                                             style={{
                                                 lineHeight: heightSlider + 'px',
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            <span>{stackCount}</span>
+                                            <Dash />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Giảm khoảng cách camera
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretUpFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Tăng chiều cao camera
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretDownFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Giảm chiều cao camera
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretLeftFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Quay camera theo chiều kim đồng hồ
+                                        </Col>
+                                    </Row>
+                                    <Row
+                                        style={{
+                                            height: heightSlider + 'px',
+                                            margin: '8px 0',
+                                        }}
+                                    >
+                                        <Col
+                                            span={5}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            <CaretRightFill />
+                                        </Col>
+                                        <Col
+                                            span={19}
+                                            style={{
+                                                lineHeight: heightSlider + 'px',
+                                            }}
+                                        >
+                                            Quay camera ngược chiều kim đồng hồ
                                         </Col>
                                     </Row>
                                     <Checkbox.Group
@@ -1011,33 +1063,37 @@ export default function Screen() {
                                         value={checkedValueList}
                                         onChange={onCheckboxChange}
                                     >
-                                        <Row style={{ marginBottom: '4px' }}>
-                                            <Checkbox value="Wireframe">
-                                                Show Wireframe
-                                            </Checkbox>
+                                        <Row
+                                            style={{
+                                                marginBottom: '4px',
+                                            }}
+                                        >
+                                            <Col
+                                                span={5}
+                                                style={{
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                <Checkbox value="Wireframe"></Checkbox>
+                                            </Col>
+                                            <Col span={19}>Hiện khung dây</Col>
                                         </Row>
                                         <Row style={{ marginBottom: '4px' }}>
-                                            <Checkbox value="Animation">
-                                                Start Animation
-                                            </Checkbox>
-                                        </Row>
-                                        <Row style={{ marginBottom: '4px' }}>
-                                            <Checkbox value="Smooth">
-                                                Smooth Shading
-                                            </Checkbox>
+                                            <Col
+                                                span={5}
+                                                style={{
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                <Checkbox value="Animation"></Checkbox>
+                                            </Col>
+                                            <Col span={19}>
+                                                Bắt đầu chuyển động
+                                            </Col>
                                         </Row>
                                     </Checkbox.Group>
                                     <Row>
                                         <Col span={24}>
-                                            <Button
-                                                type="primary"
-                                                onClick={() => handleReset()}
-                                            >
-                                                Tạo lại
-                                            </Button>
-                                        </Col>
-                                        <Col span={24}>
-                                            {' '}
                                             <Button
                                                 onClick={() => downloadImage()}
                                             >
