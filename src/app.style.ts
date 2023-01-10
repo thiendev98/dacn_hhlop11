@@ -7,6 +7,7 @@ export const AppStyle = styled.div`
         text-decoration: none;
         list-style-type: none;
         box-sizing: border-box;
-        font-family: Poppins, serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+            Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     }
 `;
